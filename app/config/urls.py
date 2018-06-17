@@ -19,7 +19,7 @@ from education.views import student, school
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('student/', include('student')),
-    # path('school/', include('school')),
+    path('student/', include('student')),
+    path('school/', include('school')),
     # path('', index),
 ]

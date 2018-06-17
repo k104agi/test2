@@ -1,18 +1,27 @@
+from django.http import HttpResponse
 from django.shortcuts import render
-from .models import *
+from django.utils import timezone
+from .models import School, Student
+
 
 def index(request):
-    context = {
-        'student': student,
-    }
-    return render(request, 'education/index.html', context)
+    return render(request, '.templates/education/index.html', {})
 
 
-def student(request, student_id):
-    response = "You're looking at the results of student %s."
-    return HttpResponse(response % student_id)
+def student(request):
+    return render(request, '.templates/education/student.html', {})
 
 
-def school(request, school_id):
-    response = "You're looking at the results of school %s."
-    return HttpResponse(response % school_id)
+def school(request):
+    return render(request, '.templates/education/school.html', {})
+
+
+def school_list(request):
+    school_list = School.objects.all()
+    return render(request, 'templates/school_list.html', {'school_list': school_list})
+
+# def school_detail(request):
+#
+# def student_list(request):
+#
+# def student_detail(request):
